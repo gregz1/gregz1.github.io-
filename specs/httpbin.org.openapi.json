@@ -1,0 +1,413 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "TEST Booking Engine Hub v2.0",
+        "description": "API Management facade for a very handy and free online HTTP tool.",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://api-be.staging.siriona.com"
+        }
+    ],
+    "paths": {
+        "/v2/{sessionId}/quote": {
+            "get": {
+                "summary": "/status",
+                "description": "Returns provided HTTP Status code.",
+                "operationId": "status",
+                "parameters": [
+					{
+						"$ref": "#/components/parameters/PathSessionId"
+					},
+					{
+						"$ref": "#/components/parameters/X-AVP-DiscountCalculationMode"
+					},
+					{
+						"$ref": "#/components/parameters/X-AVP-DiscountValue"
+					},
+					{
+						"$ref": "#/components/parameters/X-AVP-CallOptionAmount"
+					},
+					{
+						"$ref": "#/components/parameters/X-AVP-CallOptionValidityHours"
+					},
+					{
+						"$ref": "#/components/parameters/X-AVP-CallOptionDisableCardGuarantee"
+					},
+					{
+						"$ref": "#/components/parameters/X-AVP-Impersonation"
+					}
+				],
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/get": {
+            "get": {
+                "summary": "/get",
+                "description": "Returns GET data.",
+                "operationId": "get",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/post": {
+            "post": {
+                "summary": "/post",
+                "description": "Returns POST data.",
+                "operationId": "post",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/patch": {
+            "patch": {
+                "summary": "/patch",
+                "description": "Returns PATCH data.",
+                "operationId": "patch",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/put": {
+            "put": {
+                "summary": "/put",
+                "description": "Returns PUT data.",
+                "operationId": "put",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/delete": {
+            "delete": {
+                "summary": "/delete",
+                "description": "Returns DELETE data.",
+                "operationId": "delete",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/xml": {
+            "get": {
+                "summary": "/xml",
+                "description": "Returns some XML.",
+                "operationId": "xml",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/ip": {
+            "get": {
+                "summary": "/ip",
+                "description": "Returns origin IP.",
+                "operationId": "ip",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/user-agent": {
+            "get": {
+                "summary": "/user-agent",
+                "description": "Returns user agent string.",
+                "operationId": "user-agent",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/headers": {
+            "get": {
+                "summary": "/headers",
+                "description": "Returns headers dictionary.",
+                "operationId": "headers",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/delay/{seconds}": {
+            "get": {
+                "summary": "/delay",
+                "description": "Delays responding for n–10 seconds.",
+                "operationId": "delay",
+                "parameters": [
+                    {
+                        "name": "seconds",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "2"
+                            ],
+                            "type": "string",
+                            "default": "2"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        },
+        "/cache/{maxAge}": {
+            "get": {
+                "summary": "/cache",
+                "operationId": "cache",
+                "parameters": [
+                    {
+                        "name": "maxAge",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "10"
+                            ],
+                            "type": "string",
+                            "default": "10"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+		"parameters": {
+			"PathSessionId": {
+				"name": "sessionId",
+				"in": "path",
+				"description": "The session identifier.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "1a11a111-22b2-3333-dd4d-e55e5ee5e555"
+				}
+			},
+			"BookingReference": {
+				"name": "bookingReference",
+				"in": "path",
+				"description": "The booking identifier.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "BKRF"
+				}
+			},
+			"EngineId": {
+				"name": "engineId",
+				"in": "query",
+				"description": "The engine identifier.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": 1234
+				}
+			},
+			"RoomId": {
+				"name": "roomId",
+				"in": "path",
+				"description": "The room identifier.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": 1234
+				}
+			},
+			"RateId": {
+				"name": "rateId",
+				"in": "path",
+				"description": "The rate identifier.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "1234"
+				}
+			},
+			"ExtraId": {
+				"name": "extraId",
+				"in": "path",
+				"description": "The extra identifier.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"HotelId": {
+				"name": "hotelId",
+				"in": "path",
+				"description": "The hotel identifier.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"PageNumber": {
+				"name": "pageNumber",
+				"in": "query",
+				"description": "The number of the requested page.",
+				"required": false,
+				"schema": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"PageSize": {
+				"name": "pageSize",
+				"in": "query",
+				"description": "The number of results per response.",
+				"required": false,
+				"schema": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"GuestPosition": {
+				"name": "guestPosition",
+				"in": "query",
+				"description": "The index of a room which corresponds to the `index` of a guest.",
+				"required": false,
+				"schema": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"X-AVP-DiscountCalculationMode": {
+				"name": "X-AVP-DiscountCalculationMode",
+				"in": "header",
+				"description": "The discount calculation mode.",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-DiscountValue": {
+				"name": "X-AVP-DiscountValue",
+				"in": "header",
+				"description": "The discount value.",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-CallOptionAmount": {
+				"name": "X-AVP-CallOptionAmount",
+				"in": "header",
+				"description": "The option amount.",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-CallOptionValidityHours": {
+				"name": "X-AVP-CallOptionValidityHours",
+				"in": "header",
+				"description": "The option hours validity.",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-CallOptionDisableCardGuarantee": {
+				"name": "X-AVP-CallOptionDisableCardGuarantee",
+				"in": "header",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-Impersonation": {
+				"name": "X-AVP-Impersonation",
+				"in": "header",
+				"description": "The impersonation.",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-Validation": {
+				"name": "X-AVP-Validation",
+				"in": "header",
+				"description": "",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-DescriptionType": {
+				"name": "X-AVP-DescriptionType",
+				"in": "header",
+				"description": "",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-PictureTemplates": {
+				"name": "X-AVP-PictureTemplates",
+				"in": "header",
+				"description": "",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-Properties": {
+				"name": "X-AVP-Properties",
+				"in": "header",
+				"description": "",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			},
+			"X-AVP-SessionDuration": {
+				"name": "X-AVP-SessionDuration",
+				"in": "header",
+				"description": "",
+				"required": false,
+				"schema": {
+					"type": "string"
+				}
+			}
+		}
+		
+		
+	}
+}
